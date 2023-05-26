@@ -1,0 +1,29 @@
+<div class="container mt-3">
+    <div class="form-group" [formGroup]="formGroup">
+        <label for="userName">Username:</label>
+        <input type="text" class="form-control" id="userName" placeholder="Enter username" name="userName" [formControl]="userName">
+
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" [formControl]="email">
+
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" [formControl]="password">
+
+        <label for="cpwd">Confirm Password:</label>
+        <input type="password" class="form-control" id="cpwd" placeholder="Enter password" name="cpwd" [formControl]="confirmPassword">
+
+        <label for="phone">Phone:</label>
+        <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone" [formControl]="phone">
+
+        <label for="department">Department:</label>
+        <select class="form-select" id="department" name="department" [formControl]="department">
+            <option value="waiter" selected>Waiter</option>
+            <option value="chef">Chef</option>
+            <option value="admin">Admin</option>
+        </select>
+
+        <div class="mt-2">
+            <button type="button" class="ms-1 btn btn-primary" (click)="signUp()">Register</button>
+        </div>
+    </div>
+</div>

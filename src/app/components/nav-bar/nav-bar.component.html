@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/menu']">Carta</a>
+        </li>
+       <li class="nav-item" *ngIf="user && (user.getDepartment() == 'waiter' || user.getDepartment() == 'admin')">
+          <a class="nav-link" [routerLink]="['orders/create']">Crear comanda</a>
+        </li>
+        <li class="nav-item" *ngIf="user && (user.getDepartment() == 'chef' || user.getDepartment() == 'admin')">
+          <a class="nav-link" [routerLink]="['/orders']">Ver Comandas</a>
+        </li>
+        <li class="nav-item" *ngIf="!user || user.getDepartment() == ''">
+          <a class="nav-link" [routerLink]="['/signin']">Iniciar Sesión</a>
+        </li>
+        <li class="nav-item" *ngIf="user && user.getDepartment() == 'admin'">
+          <a class="nav-link" [routerLink]="['/signup']">Registrar empleado</a>
+        </li>
+        <!--Navbar item with userName as dropdown that allows the logged user to sign out-->
+        <li class="nav-item dropdown" *ngIf="user && user.getDepartment() != ''">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            {{user.getUserName()}}
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" (click)="open()">Cerrar Sesión</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+</nav>

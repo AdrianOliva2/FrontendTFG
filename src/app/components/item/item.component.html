@@ -1,0 +1,10 @@
+<div class="container mt-3">
+    <div class="card text-left">
+    	<img class="card-img-top img-fluid img-thumbnail rounded" style="height: 540px;" [src]="item?.getImage()" alt="">
+        <div class="card-body">
+          <h4 class="card-title">{{item?.getName()}}</h4>
+          <p class="card-text">{{item?.getDescription()}}</p>
+          <p class="card-text">{{item?.getPrice()}}€</p>
+        </div>
+    </div>    
+</div>

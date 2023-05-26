@@ -1,0 +1,22 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="form-group" [formGroup]="formGroup">
+                <label for="email">Correo:</label>
+                <input type="email" class="form-control" id="email" placeholder="Email" name="email" [formControl]="email">
+        
+                <label for="pwd">Contraseña:</label>
+                <input type="password" class="form-control" id="pwd" placeholder="Password" name="pwd" [formControl]="password">
+                
+                <!--Red label for show incorrect email or password-->
+                <label class="text-danger" *ngIf="incorrectCredentials">{{incorrectCredentials}}</label>
+
+                <div class="mt-2">
+                    <button type="button" class="me-1 btn btn-primary" (click)="signIn()">Login</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
