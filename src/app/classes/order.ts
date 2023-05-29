@@ -7,10 +7,10 @@ export class Order {
     private total: number;
     private completed: boolean;
 
-    public constructor(id: number | undefined, items: Item[], completed: boolean) {
+    public constructor(id: number | undefined, items: Item[]) {
         this.setId(id);
         this.items = items;
-        this.completed = completed;
+        this.completed = false;
         this.total = this.calculateTotal();
     }
 

@@ -8,7 +8,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { CreateOrderComponent } from './components/create-order/create-order.component';
 import { OrdersComponent } from './components/orders/orders.component';
-import { OrdersListComponent } from './components/orders-list/orders-list.component';
 import { OrderComponent } from './components/order/order.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -24,7 +23,6 @@ import { SignOutModalComponent } from './components/sign-out-modal/sign-out-moda
     OrderComponent,
     CreateOrderComponent,
     OrdersComponent,
-    OrdersListComponent,
     SignInComponent,
     SignUpComponent,
     SignOutModalComponent

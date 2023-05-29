@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { User } from '../classes/user';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { catchError, finalize } from 'rxjs/operators';
-import { of, throwError } from 'rxjs';
-import { async } from '@angular/core/testing';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TokenInvalidModalComponent } from '../components/token-invalid-modal/token-invalid-modal.component';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,7 @@ export class SessionService {
   private user?: User;
   private $user: BehaviorSubject<User | undefined>;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private ngbModal: NgbModal) {
     this.$user = new BehaviorSubject<User | undefined>(this.user);
   }
 
@@ -75,6 +74,7 @@ export class SessionService {
           async error => {
             reject(false);
             localStorage.removeItem("token");
+            this.ngbModal.open(TokenInvalidModalComponent);
           }
         );
       }

@@ -1,1 +1,14 @@
-<p>menu works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 mt-5" *ngFor="let item of items">
+            <div class="card text-left">
+              <img class="card-img-top" style="height: 200px;" [src]="item.getImage()">
+              <div class="card-body">
+                <h4 class="card-title">{{item.getName()}}</h4>
+                <p class="card-text">{{item.getDescription()}}</p>
+                <p class="card-text fw-bold">{{item.getPrice()}}€</p>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>

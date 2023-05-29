@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Item } from 'src/app/classes/item';
+import { ItemsService } from 'src/app/services/items.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  items?: Item[];
+
+  constructor(private itemsService: ItemsService) {
+    itemsService.$items()?.subscribe((items: Item[]) => {
+        this.items = items;
+      }
+    );
+  }
 
   ngOnInit(): void {
   }

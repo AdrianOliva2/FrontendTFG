@@ -1,5 +1,20 @@
 <div class="container">
     <div class="row mt-4">
-        <app-orders-list></app-orders-list>
+        <div class="col-md-3" *ngFor="let order of orders">
+            <div class="card text-left">
+                <div class="card-body">
+                    <h4 class="card-title">Comanda {{order.getId()}}</h4>
+                    <p class="card-text" *ngFor="let item of order.getItems()">{{item.getName()}} - {{item.getPrice()}}€</p>
+                    <p class="card-text fw-bold">Total: {{order.getTotal()}}€</p>
+                    <div *ngIf="user">
+                        <div *ngIf="user.getDepartment() === 'admin' || user?.getDepartment() === 'chef'">
+                            <button class="btn btn-success" *ngIf="!order.getCompleted()" (click)="order.setCompleted(true)">Completar comanda</button>
+                            <button class="btn btn-danger" *ngIf="order.getCompleted()" (click)="order.setCompleted(false)">Descompletar comanda</button>
+                        </div>
+                        <button *ngIf="user.getDepartment() === 'admin' || user.getDepartment() === 'waiter'" class="btn btn-primary mt-2" [routerLink]="['/orders', order.getId()]">Modificar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

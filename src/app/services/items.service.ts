@@ -11,7 +11,7 @@ export class ItemsService {
   private _$items?: BehaviorSubject<Item[]>;  
 
   constructor(private httpClient: HttpClient) {
-    this.loadItems();
+    //this.loadItems();
     this.items = [
       new Item(1, 'Coca-Cola', 'Coca-Cola', 2.50, 'https://w7.pngwing.com/pngs/717/116/png-transparent-coca-cola-logo-coca-cola-logo-company-business-cola-company-text-photography.png'),
       new Item(2, 'Hamburguesa clásica', 'Deliciosa hamburguesa con carne jugosa, lechuga, tomate y queso', 8.50, 'https://example.com/hamburguesa.jpg'),

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Order } from '../classes/order';
 import { BehaviorSubject } from 'rxjs';
+import { ItemsService } from './items.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,14 @@ export class OrdersService {
   private orders: Order[];
   private _$orders: BehaviorSubject<Order[]>;
 
-  constructor(private httpClient: HttpClient) {
-    this.orders = [];
+  constructor(private httpClient: HttpClient, private itemsService: ItemsService) {
+    this.orders = [
+      new Order(1, [itemsService.getItem(1), itemsService.getItem(2), itemsService.getItem(3)]),
+      new Order(2, [itemsService.getItem(4), itemsService.getItem(5), itemsService.getItem(6)]),
+      new Order(3, [itemsService.getItem(7), itemsService.getItem(8), itemsService.getItem(9), itemsService.getItem(10)])
+    ];
     this._$orders = new BehaviorSubject<Order[]>(this.orders);
-    this.loadOrders();
+    //this.loadOrders();
   }
 
   public loadOrders() {
@@ -26,6 +31,10 @@ export class OrdersService {
 
   public getOrders(): Order[] {
     return this.orders;
+  }
+
+  public getOrder(id: number): Order | undefined {
+    return this.orders.find((order: Order) => order.getId() == id);
   }
 
   public $orders() {

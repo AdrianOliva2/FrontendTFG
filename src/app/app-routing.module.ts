@@ -8,11 +8,12 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignedOutGuard } from './guards/signed-out.guard';
 import { SignedInGuard } from './guards/signed-in.guard';
+import { WaiterGuard } from './guards/waiter.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/menu', pathMatch: 'full' },
   { path: 'menu', component: MenuComponent, data: { title: 'Menu' } },
-  { path: 'orders/:id', component: OrderComponent, data: { title: 'Order' }, canActivate: [SignedInGuard] },
+  { path: 'orders/:id', component: OrderComponent, data: { title: 'Order' }, canActivate: [SignedInGuard, WaiterGuard] },
   { path: 'orders/create', component: CreateOrderComponent, data: { title: 'Create Order' }, canActivate: [SignedInGuard] },
   { path: 'orders', component: OrdersComponent, data: { title: 'Orders' }, canActivate: [SignedInGuard] },
   { path: 'signin', component: SignInComponent, data: { title: 'Login' }, canActivate: [SignedOutGuard] },
