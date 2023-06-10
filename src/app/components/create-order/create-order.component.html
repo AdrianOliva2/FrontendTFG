@@ -1,1 +1,17 @@
-<p>create-order works!</p>
+<div class="container">
+    <div class="card text-left mt-3 mb-3">
+      <img class="card-img-top" alt=""> <!--src="holder.js/100px180/"-->
+      <div class="card-body">
+        <h4 class="card-title">Nueva comanda</h4>
+        <p class="card-text" *ngFor="let item of items">{{item.getName()}} - {{item.getPrice()}}€ <button class="btn" (click)="removeItem(item.getId())">🗑️</button></p>
+        <select #ddlItems (change)="onSelectionChanged(ddlItems.selectedIndex + 1)">
+          <option *ngFor="let item of itemsService.getItems()" [value]="item.getId()">{{item.getName()}} - {{item.getPrice()}}€</option>
+        </select>
+        <br/>
+        <button class="btn btn-success mt-3 mb-3" (click)="addItem()">Añadir producto</button>
+        <br/>
+        <p class="card-text fw-bold">Total: {{total}}€</p>
+        <button class="btn btn-primary" (click)="createOrder()">Crear comanda</button>
+      </div>
+    </div>
+</div>

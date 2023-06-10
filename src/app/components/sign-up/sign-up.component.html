@@ -1,26 +1,38 @@
 <div class="container mt-3">
     <div class="form-group" [formGroup]="formGroup">
-        <label for="userName">Username:</label>
-        <input type="text" class="form-control" id="userName" placeholder="Enter username" name="userName" [formControl]="userName">
+        <label for="userName">Nombre de usuario:</label>
+        <input type="text" class="form-control" id="userName" placeholder="Usuario" name="userName" [formControl]="userName">
 
-        <label for="email">Email:</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" [formControl]="email">
+        <label for="email">Correo electrónico:</label>
+        <input type="email" class="form-control" id="email" placeholder="Correo" name="email" [formControl]="email">
 
-        <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" [formControl]="password">
+        <label for="pwd">Contraseña:</label>
+        <input type="password" class="form-control" id="pwd" placeholder="contraseña" name="pwd" [formControl]="password">
 
-        <label for="cpwd">Confirm Password:</label>
-        <input type="password" class="form-control" id="cpwd" placeholder="Enter password" name="cpwd" [formControl]="confirmPassword">
+        <label for="cpwd">Repetir contraseña:</label>
+        <input type="password" class="form-control" id="cpwd" placeholder="Repetir contraseña" name="cpwd" [formControl]="confirmPassword">
 
-        <label for="phone">Phone:</label>
+        <label for="phone">Teléfono:</label>
         <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone" [formControl]="phone">
 
-        <label for="department">Department:</label>
+        <label for="department">Cargo:</label>
         <select class="form-select" id="department" name="department" [formControl]="department">
-            <option value="waiter" selected>Waiter</option>
-            <option value="chef">Chef</option>
-            <option value="admin">Admin</option>
+            <option value="waiter" selected>Camarero</option>
+            <option value="chef">Cocinero</option>
+            <option value="admin">Administrador</option>
         </select>
+        
+        <div *ngIf="department.errors && department.touched" class="text-danger">
+            Selecciona un cargo.
+        </div>
+
+        <div *ngIf="formGroup.hasError('mismatch') && (formGroup.get('confirmPassword')?.dirty || formGroup.get('confirmPassword')?.touched)" class="text-danger">
+            Las contraseñas no coinciden.
+        </div>
+
+        <div *ngIf="errorMsg" class="text-danger mt-3">
+            <p>{{errorMsg}}</p>
+        </div>
 
         <div class="mt-2">
             <button type="button" class="ms-1 btn btn-primary" (click)="signUp()">Register</button>

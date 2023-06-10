@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Item } from 'src/app/classes/item';
 import { ItemsService } from 'src/app/services/items.service';
 
@@ -11,7 +12,7 @@ export class MenuComponent implements OnInit {
 
   items?: Item[];
 
-  constructor(private itemsService: ItemsService) {
+  constructor(private itemsService: ItemsService, private router: Router) {
     itemsService.$items()?.subscribe((items: Item[]) => {
         this.items = items;
       }
@@ -19,6 +20,11 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  public onClick(item: Item): void {
+    console.log(item);
+    this.router.navigate(['/item', item.getId()]);
   }
 
 }

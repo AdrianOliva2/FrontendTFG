@@ -5,9 +5,9 @@
           <a class="nav-link" [routerLink]="['/menu']">Carta</a>
         </li>
        <li class="nav-item" *ngIf="user && (user.getDepartment() == 'waiter' || user.getDepartment() == 'admin')">
-          <a class="nav-link" [routerLink]="['orders/create']">Crear comanda</a>
+          <a class="nav-link" [routerLink]="['create/orders']">Crear comanda</a>
         </li>
-        <li class="nav-item" *ngIf="user && (user.getDepartment() == 'chef' || user.getDepartment() == 'admin')">
+        <li class="nav-item" *ngIf="user && (user.getDepartment() == 'chef' || user.getDepartment() == 'waiter' || user.getDepartment() == 'admin')">
           <a class="nav-link" [routerLink]="['/orders']">Ver Comandas</a>
         </li>
         <li class="nav-item" *ngIf="!user || user.getDepartment() == ''">

@@ -29,6 +29,16 @@ export class OrdersService {
     });
   }
 
+  public getNextId(): number {
+    let maxId: number = 0;
+    this.orders.forEach((order: Order) => {
+      if (order !== undefined && order.getId() !== undefined && order.getId()! > maxId) {
+        maxId = order.getId()!;
+      }
+    });
+    return maxId + 1;
+  }
+
   public getOrders(): Order[] {
     return this.orders;
   }
@@ -58,29 +68,39 @@ export class OrdersService {
   }
 
   public addOrder(order: Order): boolean {
-    if (order.getId() === undefined) {
-      this.httpClient.post('http://localhost:8080/order', order).subscribe(() => {
+    if (order.getId() !== undefined) {
+      /*this.httpClient.post('http://localhost:8080/order', order).subscribe(() => {
         this.loadOrders();
-      });
+      });*/
+      this.orders.push(order);
+      this._$orders.next(this.orders);
       return true;
     }
     return false;
   }
 
-  public deleteOrder(order: Order): boolean {
-    if (order.getId() !== undefined) {
-      this.httpClient.delete(`http://localhost:8080/order/${order.getId()}`).subscribe(() => {
+  public deleteOrder(orderId: number | undefined): boolean {
+    if (orderId !== undefined) {
+      /*this.httpClient.delete(`http://localhost:8080/order/${orderId}`).subscribe(() => {
         this.loadOrders();
-      });
+      });*/
+      this.orders = this.orders.filter((order: Order) => order.getId() !== orderId);
+      this._$orders.next(this.orders);
       return true;
     }
     return false;
   }
 
-  public updateOrder(order: Order): boolean {
-    if (order.getId() !== undefined) {
-      this.httpClient.put(`http://localhost:8080/order/update/${order.getId()}`, order).subscribe(() => {
+  public updateOrder(order: Order | undefined): boolean {
+    if (order !== undefined && order.getId() !== undefined) {
+      /*this.httpClient.put(`http://localhost:8080/order/update/${order.getId()}`, order).subscribe(() => {
         this.loadOrders();
+      });*/
+      this.orders.forEach((o: Order, index: number) => {
+        if (o.getId() == order?.getId()) {
+          order.setCompleted(false);
+          this.orders[index] = order;
+        }
       });
       return true;
     }

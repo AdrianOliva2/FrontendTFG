@@ -113,7 +113,7 @@ export class SessionService {
           department: user.getDepartment(),
         };
         let json = JSON.stringify(userObject);
-
+        
         this.httpClient.post("http://localhost:8080/employee/signup", json, options).subscribe(
           async (response) => {
             JSON.parse(JSON.stringify(response), (key, value) => {
@@ -127,6 +127,9 @@ export class SessionService {
                 }
               }
             });
+          },
+          async (error) => {
+            reject(false);
           }
         );
       }

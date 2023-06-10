@@ -1,3 +1,4 @@
+import { ItemsService } from "../services/items.service";
 import { Item } from "./item";
 
 export class Order {
@@ -26,11 +27,26 @@ export class Order {
         return this.items;
     }
 
+    public addItem(itemsService: ItemsService, itemId: number) {
+        this.items.unshift(itemsService.getItem(itemId));
+    }
+
+    public removeItem(itemId: number | undefined) {
+        let borrado: boolean = false;
+        this.items.forEach((item: Item, index: number) => {
+            if (item.getId() === itemId && !borrado) {
+                this.items.splice(index, 1);
+                borrado = true;
+            }
+        });
+    }
+
     public setItems(items: Item[]) {
         this.items = items;
     }
 
     public getTotal(): number {
+        this.total = this.calculateTotal();
         return this.total;
     }
 

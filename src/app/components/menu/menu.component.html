@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3 mt-5" *ngFor="let item of items">
-            <div class="card text-left">
+            <div class="card text-left" (click)="onClick(item)">
               <img class="card-img-top" style="height: 200px;" [src]="item.getImage()">
               <div class="card-body">
                 <h4 class="card-title">{{item.getName()}}</h4>
