@@ -98,7 +98,6 @@ export class OrdersService {
       });*/
       this.orders.forEach((o: Order, index: number) => {
         if (o.getId() == order?.getId()) {
-          order.setCompleted(false);
           this.orders[index] = order;
         }
       });

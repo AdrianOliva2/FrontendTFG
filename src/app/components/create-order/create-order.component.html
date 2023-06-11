@@ -2,16 +2,14 @@
     <div class="card text-left mt-3 mb-3">
       <img class="card-img-top" alt=""> <!--src="holder.js/100px180/"-->
       <div class="card-body">
-        <h4 class="card-title">Nueva comanda</h4>
+        <h4 class="card-title mb-3">Nueva comanda</h4>
         <p class="card-text" *ngFor="let item of items">{{item.getName()}} - {{item.getPrice()}}€ <button class="btn" (click)="removeItem(item.getId())">🗑️</button></p>
-        <select #ddlItems (change)="onSelectionChanged(ddlItems.selectedIndex + 1)">
+        <p class="card-text fw-bold">Total: {{total}}€</p>
+        <select #ddlItems (change)="onSelectionChanged(ddlItems.selectedIndex + 1)" class="form-select mb-3">
           <option *ngFor="let item of itemsService.getItems()" [value]="item.getId()">{{item.getName()}} - {{item.getPrice()}}€</option>
         </select>
-        <br/>
-        <button class="btn btn-success mt-3 mb-3" (click)="addItem()">Añadir producto</button>
-        <br/>
-        <p class="card-text fw-bold">Total: {{total}}€</p>
-        <button class="btn btn-primary" (click)="createOrder()">Crear comanda</button>
+        <button class="btn btn-success me-1" (click)="addItem()">Añadir producto</button>
+        <button class="btn btn-primary ms-1" (click)="createOrder()">Crear comanda</button>
       </div>
     </div>
 </div>

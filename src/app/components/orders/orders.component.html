@@ -7,11 +7,11 @@
                     <p class="card-text" *ngFor="let item of order.getItems()">{{item.getName()}} - {{item.getPrice()}}€</p>
                     <p class="card-text fw-bold">Total: {{order.getTotal()}}€</p>
                     <div *ngIf="user">
+                        <button *ngIf="user.getDepartment() === 'admin' || user.getDepartment() === 'waiter'" class="btn btn-primary mb-1" [routerLink]="['/orders', order.getId()]">Modificar</button>
                         <div *ngIf="user.getDepartment() === 'admin' || user?.getDepartment() === 'chef'">
-                            <button class="btn btn-success" *ngIf="!order.getCompleted()" (click)="order.setCompleted(true)">Completar comanda</button>
-                            <button class="btn btn-danger" *ngIf="order.getCompleted()" (click)="order.setCompleted(false)">Descompletar comanda</button>
+                            <button class="btn btn-success mt-1" *ngIf="!order.getCompleted()" (click)="completeOrder(order, true)">Completar comanda</button>
+                            <button class="btn btn-danger mt-1" *ngIf="order.getCompleted()" (click)="completeOrder(order, false)">Incompletar comanda</button>
                         </div>
-                        <button *ngIf="user.getDepartment() === 'admin' || user.getDepartment() === 'waiter'" class="btn btn-primary mt-2" [routerLink]="['/orders', order.getId()]">Modificar</button>
                     </div>
                 </div>
             </div>

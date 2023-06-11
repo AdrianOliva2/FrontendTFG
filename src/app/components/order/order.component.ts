@@ -28,11 +28,15 @@ export class OrderComponent implements OnInit {
   public addItem() {
     this.order?.addItem(this.itemsService, this.itemSelected);
     this.order?.getTotal();
-    this.ordersService.updateOrder(this.order);
   }
 
   public removeOrder() {
     this.ordersService.deleteOrder(this.order?.getId());
+    this.router.navigate(['/orders']);
+  }
+
+  public updateOrder() {
+    this.ordersService.updateOrder(this.order);
     this.router.navigate(['/orders']);
   }
 

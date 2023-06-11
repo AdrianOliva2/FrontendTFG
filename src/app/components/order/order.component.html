@@ -4,14 +4,13 @@
     <div class="card-body">
       <h4 class="card-title">Comanda {{order.getId()}}</h4>
       <p class="card-text" *ngFor="let item of order.getItems()">{{item.getName()}} - {{item.getPrice()}}€ <button class="btn" (click)="order.removeItem(item.getId())">🗑️</button></p>
-      <select #ddlItems (change)="onSelectionChanged(ddlItems.selectedIndex + 1)">
+      <p class="card-text fw-bold">Total: {{order.getTotal()}}€</p>
+      <select #ddlItems (change)="onSelectionChanged(ddlItems.selectedIndex + 1)" class="form-select mb-3">
         <option *ngFor="let item of itemsService.getItems()" [value]="item.getId()">{{item.getName()}} - {{item.getPrice()}}€</option>
       </select>
-      <br/>
-      <button class="btn btn-success mt-3 mb-3" (click)="addItem()">Añadir producto</button>
-      <br/>
-      <button class="btn btn-danger mb-3" (click)="removeOrder()">Eliminar comanda</button>
-      <p class="card-text fw-bold">Total: {{order.getTotal()}}€</p>
+      <button class="btn btn-success me-1" (click)="addItem()">Añadir producto</button>
+      <button class="btn btn-danger ms-1 me-1" (click)="removeOrder()">Eliminar comanda</button>
+      <button class="btn btn-primary ms-1" (click)="updateOrder()">Modificar comanda</button>
     </div>
   </div>
 </div>

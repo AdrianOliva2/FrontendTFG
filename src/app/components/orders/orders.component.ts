@@ -14,7 +14,7 @@ export class OrdersComponent implements OnInit {
   orders?: Order[];
   user?: User;
 
-  constructor(private ordersService: OrdersService, private sessionService: SessionService) {
+  constructor(public ordersService: OrdersService, private sessionService: SessionService) {
     this.user = this.sessionService.getUser();
     ordersService.$orders().subscribe((orders: Order[]) => {
         this.orders = orders;
@@ -23,6 +23,11 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  public completeOrder(order: Order, complete: boolean) {
+    order.setCompleted(complete);
+    this.ordersService.updateOrder(order);
   }
 
 }

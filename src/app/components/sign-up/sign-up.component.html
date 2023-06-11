@@ -16,12 +16,32 @@
         <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone" [formControl]="phone">
 
         <label for="department">Cargo:</label>
-        <select class="form-select" id="department" name="department" [formControl]="department">
+        <select class="form-select" [formControl]="department">
             <option value="waiter" selected>Camarero</option>
             <option value="chef">Cocinero</option>
             <option value="admin">Administrador</option>
         </select>
         
+        <div *ngIf="userName.errors && userName.touched" class="text-danger">
+            El nombre de usuario es obligatorio.
+        </div>
+
+        <div *ngIf="email.errors && email.touched" class="text-danger">
+            El correo electrónico es obligatorio, y debe de tener un formato de correo electrónico.
+        </div>
+
+        <div *ngIf="password.errors && password.touched" class="text-danger">
+            La contraseña es obligatoria.
+        </div>
+
+        <div *ngIf="confirmPassword.errors && confirmPassword.touched" class="text-danger">
+            Repite la contraseña.
+        </div>
+
+        <div *ngIf="phone.errors && phone.touched" class="text-danger">
+            El teléfono es obligatorio.
+        </div>
+
         <div *ngIf="department.errors && department.touched" class="text-danger">
             Selecciona un cargo.
         </div>
@@ -35,7 +55,7 @@
         </div>
 
         <div class="mt-2">
-            <button type="button" class="ms-1 btn btn-primary" (click)="signUp()">Register</button>
+            <button type="button" class="ms-1 btn btn-primary" (click)="signUp()">Registrar empleado</button>
         </div>
     </div>
 </div>
