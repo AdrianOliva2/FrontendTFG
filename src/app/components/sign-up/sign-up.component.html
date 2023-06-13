@@ -55,7 +55,7 @@
         </div>
 
         <div class="mt-2">
-            <button type="button" class="ms-1 btn btn-primary" (click)="signUp()">Registrar empleado</button>
+            <button type="button" class="ms-1 btn btn-primary" (click)="signUp()" [disabled]="formGroup.invalid">Registrar empleado</button>
         </div>
     </div>
 </div>

@@ -12,8 +12,16 @@
                 <!--Red label for show incorrect email or password-->
                 <label class="text-danger" *ngIf="incorrectCredentials">{{incorrectCredentials}}</label>
 
+                <div *ngIf="email.errors && email.touched" class="text-danger">
+                    El correo electrónico es obligatorio, y debe de tener un formato de correo electrónico.
+                </div>
+
+                <div *ngIf="password.errors && password.touched" class="text-danger">
+                    La contraseña es obligatoria.
+                </div>
+
                 <div class="mt-2">
-                    <button type="button" class="me-1 btn btn-primary" (click)="signIn()">Login</button>
+                    <button type="button" class="me-1 btn btn-primary" (click)="signIn()" [disabled]="formGroup.invalid">Login</button>
                 </div>
             </div>
         </div>
