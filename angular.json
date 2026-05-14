@@ -63,12 +63,15 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "buildTarget": "FrontendTFG:build"
+          },
           "configurations": {
             "production": {
-              "browserTarget": "FrontendTFG:build:production"
+              "buildTarget": "FrontendTFG:build:production"
             },
             "development": {
-              "browserTarget": "FrontendTFG:build:development"
+              "buildTarget": "FrontendTFG:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "FrontendTFG:build"
+            "buildTarget": "FrontendTFG:build"
           }
         },
         "test": {
@@ -98,5 +101,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

@@ -1,10 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Router } from 'express';
-import { SessionService } from 'src/app/services/session.service';
+import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-token-invalid-modal',
+  standalone: true,
+  imports: [CommonModule, NgbModule],
   templateUrl: './token-invalid-modal.component.html',
   styleUrls: ['./token-invalid-modal.component.css']
 })

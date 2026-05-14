@@ -1,12 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { User } from '../../classes/user';
 import { SessionService } from 'src/app/services/session.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { SignUpComponent } from '../sign-up/sign-up.component';
+import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SignOutModalComponent } from '../sign-out-modal/sign-out-modal.component';
 
 @Component({
   selector: 'nav-bar',
+  standalone: true,
+  imports: [CommonModule, RouterModule, NgbModule],
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })

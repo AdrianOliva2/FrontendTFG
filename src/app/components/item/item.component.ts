@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Item } from 'src/app/classes/item';
@@ -5,6 +6,8 @@ import { ItemsService } from 'src/app/services/items.service';
 
 @Component({
   selector: 'app-item',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.css']
 })

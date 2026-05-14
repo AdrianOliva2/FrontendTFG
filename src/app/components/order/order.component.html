@@ -1,10 +1,10 @@
 <div class="container">
-  <div class="card text-left mt-3 mb-3" *ngIf="order">
+  <div class="card text-left mt-3 mb-3" *ngIf="order as currentOrder">
     <img class="card-img-top" alt=""> <!--src="holder.js/100px180/"-->
     <div class="card-body">
-      <h4 class="card-title">Comanda {{order.getId()}}</h4>
-      <p class="card-text" *ngFor="let item of order.getItems()">{{item.getName()}} - {{item.getPrice()}}€ <button class="btn" (click)="order.removeItem(item.getId())">🗑️</button></p>
-      <p class="card-text fw-bold">Total: {{order.getTotal()}}€</p>
+      <h4 class="card-title">Comanda {{currentOrder.getId()}}</h4>
+      <p class="card-text" *ngFor="let item of currentOrder.getItems()">{{item.getName()}} - {{item.getPrice()}}€ <button class="btn" (click)="currentOrder.removeItem(item.getId())">🗑️</button></p>
+      <p class="card-text fw-bold">Total: {{currentOrder.getTotal()}}€</p>
       <select #ddlItems (change)="onSelectionChanged(ddlItems.selectedIndex + 1)" class="form-select mb-3">
         <option *ngFor="let item of itemsService.getItems()" [value]="item.getId()">{{item.getName()}} - {{item.getPrice()}}€</option>
       </select>

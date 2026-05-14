@@ -1,10 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-sign-out-modal',
+  standalone: true,
+  imports: [CommonModule, NgbModule],
   templateUrl: './sign-out-modal.component.html',
   styleUrls: ['./sign-out-modal.component.css']
 })
