@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Item } from 'src/app/classes/item';
@@ -5,6 +6,8 @@ import { ItemsService } from 'src/app/services/items.service';
 
 @Component({
   selector: 'app-menu',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })

@@ -1,4 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { Order } from 'src/app/classes/order';
 import { User } from 'src/app/classes/user';
 import { OrdersService } from 'src/app/services/orders.service';
@@ -6,6 +8,8 @@ import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-orders',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css']
 })

@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Order } from 'src/app/classes/order';
@@ -6,6 +7,8 @@ import { OrdersService } from 'src/app/services/orders.service';
 
 @Component({
   selector: 'app-order',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.css']
 })
