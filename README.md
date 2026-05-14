@@ -91,11 +91,6 @@ cd android
 # APK generado en android/app/build/outputs/apk/debug/app-debug.apk
 ```
 
-## Branches y PR relevantes
-
-- `fix/tests` — arreglos de tests (specs adaptados a componentes standalone, `test:ci`, typings).
-- `migrate/capacitor-v8` — migración y ajustes para Capacitor v8 y Android.
-
 ## Notas de migración y decisiones importantes
 
 - Migración Angular 14 → 21: se convirtieron componentes a standalone y se reemplazó el arranque por `bootstrapApplication(...)`.
