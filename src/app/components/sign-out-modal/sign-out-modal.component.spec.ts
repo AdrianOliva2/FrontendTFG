@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { SignOutModalComponent } from './sign-out-modal.component';
 
@@ -8,7 +9,8 @@ describe('SignOutModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SignOutModalComponent ]
+      imports: [ SignOutModalComponent ],
+      providers: [ NgbActiveModal ]
     })
     .compileComponents();
 

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { TokenInvalidModalComponent } from './token-invalid-modal.component';
 
@@ -8,7 +9,8 @@ describe('TokenInvalidModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TokenInvalidModalComponent ]
+      imports: [ TokenInvalidModalComponent ],
+      providers: [ NgbActiveModal ]
     })
     .compileComponents();
 

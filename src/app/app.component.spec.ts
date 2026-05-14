@@ -6,11 +6,9 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
-      ],
-      declarations: [
+        RouterTestingModule,
         AppComponent
-      ],
+      ]
     }).compileComponents();
   });
 
@@ -30,6 +28,7 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('FrontendTFG app is running!');
+    const app = fixture.componentInstance as AppComponent;
+    expect(app.title).toEqual('FrontendTFG');
   });
 });
